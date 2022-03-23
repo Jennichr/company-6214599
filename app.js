@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.get('/react-quotation/*', (req,res) => {
 //   res.sendFile(path.join(__dirname, 'public', 'react-quotation', 'index.html'));
 // })
-app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,8 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
