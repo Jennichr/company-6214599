@@ -16,9 +16,9 @@ var quotationsRouter = require('./routes/quotations')
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/react-quotation/*', (req,res) => {
-  res.sendFile(path.join(__dirname, 'public', 'react-quotation', 'index.html'));
-})
+// app.get('/react-quotation/*', (req,res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'react-quotation', 'index.html'));
+// })
 app.use(cors());
 
 // view engine setup
@@ -36,7 +36,9 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
 app.use('/quotations', quotationsRouter);
-
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
